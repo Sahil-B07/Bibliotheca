@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+body {
+  margin: 0%;
+  padding: 0%;
+}
+
+.hero-logo {
+  animation: animate 2s infinite ease-in-out alternate;
+}
+@keyframes animate {
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 1px;
+  background-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #a41db0;
+}
+
+.radio-btn {
+  filter: drop-shadow(2px 2px 3px #d226e2);
+}
+
+.slick-slide > div {
+  margin: 0 27px;
+}
+
+.slick-list {
+  height: 53vh;
+}
+
+/* shape divider */
+
+.custom-shape-divider-bottom {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: #fca311;
+  rotate: 180deg;
+}
+
+.custom-shape-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 86px;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+  fill: #e3f6f5;
+}
+
+.shape-fill {
+  filter: drop-shadow(2px 1px 4px black);
+}
+
+/* toast */
+
+.Toastify__toast {
+  border-width: 0.15rem;
+  border-radius: 0.5rem !important;
+  background-color: #000000ba !important;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+.Toastify__toast-body {
+  border-radius: rem !important;
+}
+
+.Toastify__toast.Toastify__toast--success {
+  border-color: #51ff00;
+}
+.Toastify__toast.Toastify__toast--error {
+  border-color: #ff0000;
+}
+
+.Toastify__toast-icon-color.Toastify__toast--success {
+    fill: #51ff00b7 !important;
+}
+.Toastify__close-button {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.Toastify__progress-bar.Toastify__toast--success {
+  background-color: #51ff00b7 !important;
+}
+
+:root {
+  --toastify-icon-color-success: #51ff00 !important;
+  --toastify-icon-color-error: #ff0000 !important;
+}
