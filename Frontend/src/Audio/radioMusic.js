@@ -19,7 +19,7 @@ const RadioMusic = ({radioOnOff}) => {
 
   return (
     <group position={[0, 0, 0]}>
-      <PositionalAudio ref={sound} url="/song1.mp3" offset={18}  />
+      <PositionalAudio ref={sound} url="/song1.mp3" offset={0}  />
     </group>
   );
 };
