@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Josefin_Sans } from "next/font/google";
 
@@ -10,6 +11,7 @@ export default function Layout({ children }) {
     <div className={myFont.className}>
       <Navbar />
       {children}
+      <Footer/>
     </div>
   );
 }
