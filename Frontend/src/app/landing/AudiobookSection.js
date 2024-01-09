@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Radio from "../../components/Models/Radio";
 import { PiPlay } from "react-icons/pi";
@@ -15,9 +15,9 @@ const AudiobookSection = () => {
     <section className="bg-black h-full flex" id="audio">
       <motion.div 
       initial={"hidden"} whileInView={"visible"} viewport={{once:true}}
-      className="grid grid-cols-3 w-full justify-items-center md:grid md:grid-cols-6 p-6 md:p-0 relative z-10 md:m-0 my-10">
+      className="grid grid-cols-3 w-full justify-items-center md:grid md:grid-cols-10 p-6 md:p-0 relative z-10 md:m-0 my-10">
         <motion.div
-          className="col-span-3 self-center mt-[10rem] md:mt-0 md:col-span-3 md:col-start-1 md:justify-center md:items-center md:self-center md:relative absolute"
+          className="col-span-3 self-center mt-[10rem] md:mt-0 md:col-span-3 md:col-start-2 md:justify-center md:items-center md:self-center md:relative absolute"
           variants={radio}
           transition={{ duration: 1, delay: 1 }}
         >
@@ -25,7 +25,7 @@ const AudiobookSection = () => {
           <Radio radioOnOff={radioOnOff} />
         </motion.div>
         
-        <div className="flex-col col-span-3 md:col-span-2 md:col-start-4 md:mt-24 relative">
+        <div className="flex-col col-span-3 md:col-span-4 md:col-start-6 md:mt-24 relative">
           <motion.h1 
           variants={featuresHead}
           transition={{ duration: 1.5, delay: 1.5 }}
@@ -35,13 +35,13 @@ const AudiobookSection = () => {
           <motion.p 
           variants={featuresContent}
           transition={{ duration: 1.5, delay: 1.6 }}
-          className="font-semibold text-white text-base md:text-base mt-5">
+          className="font-semibold text-white text-base md:text-lg mt-5">
             Immerse in Soundscaped Stories
           </motion.p>
           <motion.p 
           variants={featuresContent}
           transition={{ duration: 1.5, delay: 1.7 }}
-          className="font-light text-gray-400 text-sm md:text-base mt-3">
+          className="font-light text-gray-400 text-sm md:text-lg mt-3">
             Elevate your reading adventure with our immersive soundscapes.
             Explore stories that come to life through captivating music and
             sound effects, making every word an unforgettable experience. Dive
