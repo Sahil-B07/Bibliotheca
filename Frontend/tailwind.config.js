@@ -1,4 +1,4 @@
-const { Great_Vibes } = require("next/font/google")
+
 
 module.exports = {
   content: [
@@ -11,9 +11,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        Great_Vibes: ["Good Vibes", "cursive"],
-       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
