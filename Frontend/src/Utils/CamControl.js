@@ -6,7 +6,12 @@ const CamControl = (modelRef) => {
     const onMouseMove = event => {
       event.preventDefault();
       const element = document.getElementById("radio_model");
-      var rect = element.getBoundingClientRect();
+      try{
+        var rect = element.getBoundingClientRect();
+      }
+      catch{
+        var rect = null
+      }
       const position = {
       x : ((event.clientX - rect.left) / window.innerWidth) * 2 - 1,
       y : -((event.clientY - rect.top) / window.innerHeight) * 2 + 1,
