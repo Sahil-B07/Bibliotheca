@@ -103,3 +103,16 @@ body::-webkit-scrollbar-thumb {
   --toastify-icon-color-success: #51ff00 !important;
   --toastify-icon-color-error: #ff0000 !important;
 }
+
+/* cursor */
+#blob {
+  height: 30vmax;
+  aspect-ratio: 1.5;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  animation: rotate 20s infinite;
+  filter: blur(100px);
+}

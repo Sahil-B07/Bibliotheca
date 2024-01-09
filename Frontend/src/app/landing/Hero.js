@@ -1,19 +1,20 @@
-"use client"
-import React, { Suspense } from "react";
+"use client";
+import { Suspense } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ImQuill } from "react-icons/im";
 import { headPara, headText } from "@/Constants/animation";
 import DisSphere from "../../components/Models/DisSphere";
 import Link from "next/link";
-import PulseDot from "@/components/Spinner/PulseDot";
+import Cursor from "@/Utils/Cursor";
+import useIntersection from "@/Utils/useIntersection";
 
-
-const Hero = () => {
-
+const Hero = ({myFont}) => {
+  Cursor()
+  const inViewport = useIntersection();
   return (
-    <section className="bg-black h-screen flex relative">
-      <div className="hidden divide-x divide-double divide-gray-100 opacity-10 md:grid md:grid-cols-6 pointer-events-none absolute top-0 left-0 w-full h-screen z-0">
+    <section className="relative flex h-screen bg-black -z-10" id="hero">
+      <div className="pointer-events-none absolute left-0 top-0 z-0 hidden h-screen w-full divide-x divide-double divide-gray-100 opacity-10 md:grid md:grid-cols-6">
         <div></div>
         <div></div>
         <div></div>
@@ -21,38 +22,44 @@ const Hero = () => {
         <div></div>
         <div></div>
       </div>
+      {/* cursor */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.3 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+        id="blob"
+        className={`relative bg-gradient-to-r from-[#7825e5] to-[#f34bf3] z-0 ${
+          inViewport ? "visible" : "hidden"
+        }`}
+      ></motion.div>
 
-      <div className="grid w-full md:grid md:grid-cols-6 p-6 md:p-0 relative z-10">
-        <div className="mt-10 mr-auto md:col-span-2 md:col-start-2 md:flex md:flex-col place-self-center">
-          <motion.h1 className="max-w-2xl mb-4 text-5xl font-extrabold tracking-tight leading-none md:text-6xl xl:text-8xl text-white"
-          initial="hidden"
-          animate="visible"
+      <div className="relative z-10 grid w-full p-6 md:grid md:grid-cols-6 md:p-0">
+        <div className="mr-auto mt-10 place-self-center md:col-span-2 md:col-start-2 md:flex md:flex-col">
+          <motion.h1
+            className="mb-4 max-w-2xl text-5xl font-extrabold leading-none tracking-tight text-white md:text-6xl xl:text-8xl"
+            initial="hidden"
+            animate="visible"
           >
             <motion.p
+              className={myFont.yeseva.className}
               variants={headText}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Inkwell{" "}
-            </motion.p>
-            <motion.p
-              variants={headText}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              Odyssey
+              Bibliotheca
             </motion.p>
           </motion.h1>
           <motion.p
-            className="max-w-2xl mb-6 font-light text-gray-500 md:mb-8 md:text-lg dark:text-gray-400"
+            className="mb-6 max-w-2xl text-gray-400 md:mb-8 md:text-xl"
             variants={headPara}
             initial="hidden"
             animate="visible"
           >
-            Embark on an Inkwell Odyssey, where every page is a voyage, every
-            word a compass, and every writer an explorer of worlds unknown.
+            Where stories come alive with expressive narration. Your words, your
+            emotions, connecting hearts globally.
           </motion.p>
 
           <motion.button
-            className="bg-fuchsia-600 md:flex-row self-start p-2 hover:bg-fuchsia-700 rounded font-bold text-black"
+            className="self-start rounded bg-fuchsia-600 p-2 hover:bg-fuchsia-700 md:flex-row"
             initial={{ opacity: 0, y: 30 }}
             animate={{
               opacity: 1,
@@ -60,50 +67,51 @@ const Hero = () => {
               transition: { duration: 0.8, delay: 0.6 },
             }}
           >
-            <Link href={'/login'}>
-            <span>Get Started &nbsp;</span>
-            <span className="relative inline-flex h-4 w-4">
-              <span className="animate-ping absolute h-full w-full rounded-full bg-neutral-100 opacity-75"></span>
-              <motion.div 
-              animate={{
-                x: [1, 2, -1, 1, -1, 2],
-                y: [1, -2, 1, 2, -1, 2],
-                rotate: [5, -5, 5, -5, 5, -5]
-              }}
-              transition={{
-                duration: 0.5,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatDelay: 0.5
-              }}
-              exit={{x:-20}}
-              ><ImQuill className="scale-125" /></motion.div>
-            </span>
+            <Link href={"/login"}>
+              <span className="text-xl text-black !font-bold">
+                Get Started &nbsp;
+              </span>
+              <span className="relative inline-flex h-4 w-4">
+                <span className="absolute h-full w-full animate-ping rounded-full bg-neutral-100 opacity-75"></span>
+                <motion.div
+                  animate={{
+                    x: [1, 2, -1, 1, -1, 2],
+                    y: [1, -2, 1, 2, -1, 2],
+                    rotate: [5, -5, 5, -5, 5, -5],
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatDelay: 0.5,
+                  }}
+                  exit={{ x: -20 }}
+                >
+                  <ImQuill className="scale-125" />
+                </motion.div>
+              </span>
             </Link>
             &nbsp;
           </motion.button>
         </div>
-        
+
         <Suspense fallback={null}>
-        <div className="flex md:col-span-3 md:col-ends-5 justify-center items-center self-center">
-
-          <DisSphere />
-          <Image
-          className="md:w-[25vw] w-[65vw] hero-logo absolute"
-            src={"/Images/hero-logo.svg"}
-            width={100}
-            height={100}
-            alt="Hero Logo"
-            priority={true}
-          />
-
-        </div>
+          <div className="md:col-ends-5 flex items-center justify-center self-center md:col-span-3">
+            <DisSphere />
+            <Image
+              className="hero-logo absolute w-[65vw] md:w-[25vw]"
+              src={"/Images/hero-logo.svg"}
+              width={100}
+              height={100}
+              alt="Hero Logo"
+              priority={true}
+            />
+          </div>
         </Suspense>
       </div>
-      
 
-      <div className="md:opacity-60 md:h-20 w-full z-10 bottom-0 left-0 bg-gradient-to-t from-black from-5% to-[#00000001] absolute to-95%"></div>
-      <div className="border-0 md:border-b-2 border-gray-100 opacity-10 w-full z-0 bottom-0 left-0 absolute"></div>
+      <div className="absolute bottom-0 left-0 z-10 w-full bg-gradient-to-t from-black from-5% to-[#00000001] to-95% md:h-20 md:opacity-60"></div>
+      <div className="absolute bottom-0 left-0 z-0 w-full border-0 border-gray-100 opacity-10 md:border-b-2"></div>
     </section>
   );
 };
