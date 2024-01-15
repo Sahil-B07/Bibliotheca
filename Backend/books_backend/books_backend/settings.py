@@ -94,7 +94,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         'NAME': 'inkwell',
-        'USER': 'sahilb',
+        'USER': 'sahilbhor',
         'PASSWORD': 'Object@23',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -169,6 +169,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
