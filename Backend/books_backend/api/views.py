@@ -7,14 +7,16 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Book, ReadingHistory
 from .serializers import BookSerializer, ReadingHistorySerializer
 import requests
+from rest_framework import filters
 from django.http import HttpResponse
 
 class BookListCreateView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     pagination_class = PageNumberPagination
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
     filterset_class = BookFilter
+    search_fields = ['book_title', 'book_authors', 'book_genres']
 
 
 class BookRetrieveUpdateView(generics.RetrieveUpdateAPIView):
