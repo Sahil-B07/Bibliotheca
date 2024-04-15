@@ -12,11 +12,11 @@ const CamControl = (modelRef) => {
       catch{
         var rect = null
       }
-      const position = {
-      x : ((event.clientX - rect.left) / window.innerWidth) * 2 - 1,
-      y : -((event.clientY - rect.top) / window.innerHeight) * 2 + 1,
-      };
       try {
+        const position = {
+        x : ((event.clientX - rect.left) / window.innerWidth) * 2 - 1,
+        y : -((event.clientY - rect.top) / window.innerHeight) * 2 + 1,
+        };
         modelRef.current.rotation.x = position.x / 15;
         modelRef.current.rotation.y = position.y / 15
       } catch (error) {
