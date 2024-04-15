@@ -1,5 +1,5 @@
 export async function GetBookId(id) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BOOKS_API}books/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}books/${id}`, {
       method: "GET",
     });
   
