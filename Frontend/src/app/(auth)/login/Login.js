@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import { PiUserCircleLight } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
@@ -33,7 +33,7 @@ const Login = () => {
 
     if (response.status == 200){
       setTimeout(() => {
-        router.push("/landing");
+        router.push("/biblio/survey");
       }, 2000);
     }
     else{

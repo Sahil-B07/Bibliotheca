@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import { PiUserCirclePlusLight } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
