@@ -1,0 +1,102 @@
+.flip-book {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+    display: none;
+    background-size: cover;
+}
+
+.page {
+    background-color: hsl(35, 55%, 98%);
+    color: hsl(35, 35%, 35%);
+    border: solid 1px hsl(35, 20%, 70%);
+    overflow: hidden;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.page-header {
+    height: 30px;
+    font-size: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.page-image {
+    height: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.page-text {
+    height: 100%;
+    flex-grow: 1;
+    font-size: 80%;
+    text-align: justify;
+    margin-top: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    border-top: solid 1px hsl(35, 55%, 90%);
+}
+
+.page-footer {
+    border-top: solid 1px hsl(35, 55%, 90%);
+    font-size: 80%;
+    color: hsl(35, 20%, 50%);
+}
+
+.flip-book.--left {
+    border-right: 0;
+    box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.flip-book.--right {
+    border-left: 0;
+    box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.flip-book.--right .page-footer {
+    text-align: right;
+}
+
+.flip-book.hard {
+    background-color: hsl(35, 50%, 90%);
+    border: solid 1px hsl(35, 20%, 50%);
+}
+
+.flip-book.page-cover {
+    background-color: hsl(35, 45%, 80%);
+    color: hsl(35, 35%, 35%);
+    border: solid 1px hsl(35, 20%, 50%);
+}
+
+.flip-book.page-cover h2 {
+    text-align: center;
+    padding-top: 50%;
+    font-size: 210%;
+}
+
+.flip-book.page-cover.page-cover-top {
+    box-shadow: inset 0px 0 30px 0px rgba(36, 10, 3, 0.5), -2px 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+.chapter :has(a[id*="chap"]), .chapter :has(a[id*="pref"]), .chapter :is(h1, h2, h3, h4, h5, h6){
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.chapter :has(a[id*="vol"]) {
+    text-align: right;
+    font-size: smaller;
+}
+
+.chapter p {
+ margin-bottom: 12px;
+ text-wrap: wrap;
+}
