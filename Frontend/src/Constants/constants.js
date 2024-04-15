@@ -13,6 +13,35 @@ const featureContent = [
   },
 ];
 
+const quiz = {
+  questions: [
+    {
+      topic:'genre',
+      question: 'What genres do you enjoy the most?',
+      choices: ['Mystery', 'Science Fiction', 'Thriller', ''],
+      type: 'MCQs',
+    },
+    {
+      topic:'author',
+      question: 'Who is your favorite author?',
+      choices: ['J.K. Rowling', 'Stephen King', 'Stan lee', ''],
+      type: 'MCQs',
+    },
+    {
+      topic:'book',
+      question:
+        'What is your all-time favorite book?',
+      choices: ['Harry Potter and the Sorcerer\'s Stone', 'The Lord of the Rings', 'The Alchemist', ''],
+      type: 'MCQs',
+    },
+    {
+      topic:'duration',
+      question: 'What is your preferred length for audio books?',
+      choices: ['Short (up to 5 hours)', 'Medium (5 to 10 hours)', 'Long (10 to 20 hours)', 'Epic (20+ hours)'],
+      type: 'MCQs',
+    },
+  ],
+}
 
 
-export {featureContent};
+export {featureContent ,quiz};

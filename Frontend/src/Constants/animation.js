@@ -25,7 +25,7 @@ const featuresHead = {
     opacity: 1,
     y: 0,
   },
-}
+};
 
 const featuresContent = {
   hidden: { opacity: 0, x: 50 },
@@ -33,7 +33,7 @@ const featuresContent = {
     opacity: 1,
     x: 0,
   },
-}
+};
 
 // section 3
 
@@ -42,6 +42,43 @@ const radio = {
   visible: {
     opacity: 1,
     x: 0,
-  }}
+  },
+};
 
-export {headPara, headText, typeWriter, featuresHead, featuresContent, radio}
+const bounceTransition = {
+  hidden: { opacity: 1, y: 630, x: 1300, transition: { duration: 1, type: "spring", bounce: 0.5}},
+  visible: {
+    y: 630,
+    x: 640,
+    opacity: 1,
+    zIndex:1,
+    transition: { duration: 1, type: "spring", bounce: 0.25},
+  },
+};
+
+const specsOn ={
+  hidden:{opacity:0, x:10},
+  visible:{opacity:1, x:0, transition: { duration: 1.5, type:'spring', bounce:0.5}},
+}
+const specsOff ={
+  hidden:{opacity:0, x:-10},
+  visible:{opacity:1, x:0, transition: { duration: 1, type:'spring', bounce:0.25}},
+}
+const popUpBg ={
+  hidden:{opacity:0},
+  visible:{opacity:1, transition: { duration: 1 }},
+}
+
+
+export {
+  radio,
+  popUpBg,
+  specsOn,
+  specsOff,
+  headPara,
+  headText,
+  typeWriter,
+  featuresHead,
+  featuresContent,
+  bounceTransition,
+};
