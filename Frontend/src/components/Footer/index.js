@@ -8,7 +8,7 @@ const Footer = () => {
         </span>
         <ul className="mt-3 flex flex-wrap items-center font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
-            <a href="/landing/about" className="me-4 hover:underline md:me-6">
+            <a href="/biblio/about" className="me-4 hover:underline md:me-6">
               About
             </a>
           </li>

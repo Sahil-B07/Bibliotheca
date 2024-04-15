@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
-import DropDown from "../DropDown/DropDown";
+import ProfileDropDown from "../DropDown/ProfileDropDown";
 import PulseDot from "../Spinner/PulseDot";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,42 +38,42 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed left-0 top-0 z-40 h-20 w-screen bg-gradient-to-b from-transparent from-5% to-transparent to-95% opacity-80"></div>
-      <div className="fixed left-0 top-0 z-50 w-screen flex-col justify-center p-2 text-neutral-700 backdrop-blur-[2px] md:flex-row">
+      <div className="fixed left-0 top-0 h-20 w-screen bg-gradient-to-b from-transparent from-5% to-transparent to-95% opacity-80"></div>
+      <div className="fixed z-40 left-0 top-0 w-screen flex-col justify-center p-2 text-neutral-700 backdrop-blur-[2px] md:flex-row">
         <nav className="mt-2 flex items-center justify-center text-lg md:ml-auto md:mr-auto">
           <Link
-            href={"/landing"}
+            href={"/biblio"}
             className={`mx-3 cursor-pointer ${
-              activeLink === "/landing" || activeLink === "/" ? active : null
+              activeLink === "/biblio" || activeLink === "/" ? active : null
             }`}
           >
             Home
           </Link>
           <Link
-            href={"/landing/library"}
+            href={"/biblio/library"}
             className={`mx-3 cursor-pointer ${
-              activeLink === "/landing/library" ? active : null
+              activeLink === "/biblio/library" ? active : null
             }`}
           >
             Library
           </Link>
           <Link
-            href={"/landing/about"}
+            href={"/biblio/about"}
             className={`mx-3 cursor-pointer ${
-              activeLink === "/landing/about" ? active : null
+              activeLink === "/biblio/about" ? active : null
             }`}
           >
             About
           </Link>
 
           {authToken ? (
-            <div className="absolute right-[3rem] flex items-center">
-              <span className="text-zinc-600">
+            <div className="absolute right-[3rem] flex ">
+              <span className="text-zinc-600 text-base">
                 {" "}
-                {firstName + " " + lastName}{" "}
+                {firstName + " " + lastName[0]}{" "}
               </span>{" "}
               &nbsp;
-              <DropDown />
+              <ProfileDropDown />
             </div>
           ) : !loading ? (
             <Link href={"/login"}>
