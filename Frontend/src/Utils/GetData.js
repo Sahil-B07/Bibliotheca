@@ -1,6 +1,6 @@
-export async function GetData(PageNo) {
+export async function GetData(PageNo, book_title='', book_authors='', book_genres='') {
   
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BOOKS_API}books/?page=${PageNo}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}books/?book_title=${book_title}&book_authors=${book_authors}&book_genres=${book_genres}&page=${PageNo}`, {
       method: "GET",
     });
   
