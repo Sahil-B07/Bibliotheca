@@ -17,6 +17,10 @@ body {
   }
 }
 
+.search-result::-webkit-scrollbar {
+  width: 0px;
+}
+
 body::-webkit-scrollbar {
   width: 1px;
   background-color: black;
@@ -24,7 +28,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: #a41db0;
+  background: white;
 }
 
 .radio-btn {
@@ -33,10 +37,11 @@ body::-webkit-scrollbar-thumb {
 
 .slick-slide > div {
   margin: 0 27px;
+  padding-top: 2rem;
 }
 
 .slick-list {
-  height: 53vh;
+  height: 55vh;
 }
 
 /* shape divider */
