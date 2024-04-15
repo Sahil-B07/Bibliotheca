@@ -1,78 +1,66 @@
-import { DropdownMenu, Theme } from "@radix-ui/themes";
-import React, { useState } from "react";
-import { PiUserCircleLight } from "react-icons/pi";
-import { FiLogOut } from "react-icons/fi";
-import Circle from "../Spinner/Circle";
-import { AnimatePresence, motion } from "framer-motion";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+import { forwardRef } from "react";
+import * as Select from "@radix-ui/react-select";
+import classnames from "classnames";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { PiCheckBold } from "react-icons/pi";
 
-const Dropdown = () => {
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+const SelectFilter = ({selectedItem, setSelectedItem}) => {
+  
 
-  const logout = (e) => {
-    e.preventDefault();
-    setLoading(!loading);
-    Cookies.remove("authToken");
-    toast.success("Logged Out Successfully!", {
-      position: "top-left",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      delay:1500
-    });
-    setTimeout(() => {
-      router.push("/login");
-    }, 3000);
-  };
-
-  const ExitIcon = () => {
-    return (
-      <AnimatePresence>
-        <motion.div exit={{ opacity: 0 }} transition={{ duration: 1 }}>
-          <FiLogOut />
-        </motion.div>
-      </AnimatePresence>
-    );
+  const handleChange = (value) => {
+    setSelectedItem(value);
   };
 
   return (
-    <Theme accentColor="plum" asChild>
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
-          <div>
-            <PiUserCircleLight className="ml-1 scale-[2] cursor-pointer rounded-full fill-zinc-300 p-[1px] transition-colors duration-500 ease-in-out hover:border-white hover:fill-zinc-500" />
-          </div>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content
-          sideOffset={15}
-          align="end"
-          variant="soft"
-          forceMount={loading}
-        >
-          <DropdownMenu.Item className="cursor-pointer">
-            Profile
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
-            className="cursor-pointer"
-            shortcut={!loading ? <ExitIcon /> : <Circle />}
-            color="red"
-            onClick={logout}
-            disabled={loading}
-          >
-            Logout
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
-    </Theme>
+    <Select.Root onValueChange={handleChange}>
+      <Select.Trigger
+        className="inline-flex h-10 items-center justify-center gap-1 rounded bg-pink-50 px-4 text-base leading-none shadow-[0_2px_10px] shadow-black/10 outline-none hover:bg-pink-100 border border-pink-200 focus:border-pink-400"
+        aria-label="filter"
+      >
+        <Select.Value placeholder="Filter By" />
+        <Select.Icon>
+          <FaAngleDown />
+        </Select.Icon>
+      </Select.Trigger>
+      <Select.Portal>
+        <Select.Content className="overflow-hidden rounded-md bg-white shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
+          <Select.ScrollUpButton>
+            <FaAngleUp />
+          </Select.ScrollUpButton>
+          <Select.Viewport className="p-[5px]">
+            <Select.Group>
+              <SelectItem value="genre">Genre</SelectItem>
+              <SelectItem value="author">Author</SelectItem>
+              <SelectItem value="book">Title</SelectItem>
+            </Select.Group>
+          </Select.Viewport>
+          <Select.ScrollDownButton className="text-violet11 flex h-[25px] cursor-default items-center justify-center bg-white">
+            <FaAngleDown />
+          </Select.ScrollDownButton>
+        </Select.Content>
+      </Select.Portal>
+    </Select.Root>
   );
 };
 
-export default Dropdown;
+const SelectItem = forwardRef(
+  ({ children, className, ...props }, forwardedRef) => {
+    return (
+      <Select.Item
+        className={classnames(
+          "text-pink-500 data-[highlighted]:outline-none data-[highlighted]:bg-pink-200 data-[highlighted]:text-black relative flex h-7 select-none items-center rounded-sm pl-6 pr-8 text-base leading-none",
+          className,
+        )}
+        {...props}
+        ref={forwardedRef}
+      >
+        <Select.ItemText>{children}</Select.ItemText>
+        <Select.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center">
+          <PiCheckBold />
+        </Select.ItemIndicator>
+      </Select.Item>
+    );
+  },
+);
+
+export default SelectFilter;
